@@ -11,4 +11,5 @@
 7. Language Models
 8. RNNs
 9. LSTM
-10 PyTorch
+10. PyTorch
+11. ML Pipelines with Airflow 

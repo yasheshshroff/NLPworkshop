@@ -1,0 +1,23 @@
+
+digraph G{
+edge [dir=forward]
+node [shape=square]
+x [label="x"]
+w_x [label="w_x"]
+x -> x_prod
+x_prod [label="*
+x_prod"]
+w_x -> x_prod
+
+h [label="h"]
+w_h [label="w_h"]
+h -> h_prod
+w_h -> h_prod
+h_prod [label="*
+h_prod"]
+x_prod -> z
+h_prod -> z
+z [label="+
+z"]
+
+}
