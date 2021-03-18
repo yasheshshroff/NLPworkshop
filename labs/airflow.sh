@@ -3,3 +3,5 @@ wget https://raw.githubusercontent.com/yasheshshroff/NLPworkshop/main/labs/07a_p
 wget https://github.com/yasheshshroff/NLPworkshop/raw/main/labs/dataset/disaster_data.zip
 pip install rich
 unzip disaster_data.zip
+conda activate pytorch_p36
+pip install -r airflow_requirements.txt
