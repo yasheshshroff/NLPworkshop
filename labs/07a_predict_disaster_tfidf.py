@@ -1,19 +1,24 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from disaster_detection_tfidf import clf
 import numpy as np
 import pandas as pd
 import pickle
 from rich import print
+from pathlib import Path
+
+cwd = Path(__file__).parent
+data_path = cwd / 'disaster_data/predict.csv'
+vec_path = cwd / 'vectorizer.pk'
+clf_path = cwd / 'clf.pk'
 
 # queries are stored in the variable query_text
-query_text = pd.read_csv('./disaster_data/predict.csv').text.values
+query_text = pd.read_csv(data_path).text.values
 
-with open('vectorizer.pk', 'rb') as fin:
+with open(vec_path, 'rb') as fin:
     vectorizer= pickle.load(fin)
 
-with open('clf.pk', 'rb') as fin:
+with open(clf_path, 'rb') as fin:
     clf = pickle.load(fin)
 
 
