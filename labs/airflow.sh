@@ -16,3 +16,7 @@ export AIRFLOW_HOME=$HOME/airflow
 chmod +x $AIRFLOW_HOME/start-airflow.sh
 chown -R airflow:airflow $AIRFLOW_HOME
 sh ./start-airflow.sh
+
+
+# Create User
+airflow users create --username admin --firstname Warren --lastname Buffet --role Admin --email nowhere@here.com
