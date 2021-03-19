@@ -57,14 +57,14 @@ download_dataset = BashOperator(
 )
 train = BashOperator(
     task_id='train',
-    depends_on_past=True,
+    depends_on_past=False,
     bash_command='python3 $AIRFLOW_HOME/disaster_detection_tfidf.py',
     retries=3,
     dag=dag,
 )
 test = BashOperator(
     task_id='test',
-    depends_on_past=True,
+    depends_on_past=False,
     bash_command='head -50 $AIRFLOW_HOME/disaster_data/train.csv > $AIRFLOW_HOME/disaster_data/predict.csv',
     retries=3,
     dag=dag,
@@ -75,7 +75,7 @@ serve_commands = """
     """
 serve = BashOperator(
     task_id='serve',
-    depends_on_past=True,
+    depends_on_past=False,
     bash_command=serve_commands,
     retries=3,
     dag=dag,
