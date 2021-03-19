@@ -37,14 +37,14 @@ default_args = {
 dag = DAG(
     'ml_pipeline',
     default_args=default_args,
-    description='A simple Machine Learning pipeline',
+    description='TFIDF Training Pipeline',
     schedule_interval=timedelta(days=30),
 )
 
 # instantiate tasks using Operators.
 #BashOperator defines tasks that execute bash scripts. In this case, we run Python scripts for each task.
 download_commands = """
-    rm -rf $AIRFLOW_HOME/disaster_data disaster*py predict*py
+    rm -rf $AIRFLOW_HOME/disaster_data $AIRFLOW_HOME/disaster*py $AIRFLOW_HOME/predict*py $AIRFLOW_HOME/logs/prediction.log
     wget https://github.com/yasheshshroff/NLPworkshop/raw/main/labs/dataset/disaster_data.zip -O $AIRFLOW_HOME/disaster_data.zip
     unzip $AIRFLOW_HOME/disaster_data.zip -d $AIRFLOW_HOME
     wget https://raw.githubusercontent.com/yasheshshroff/NLPworkshop/main/labs/07a_disaster_detection_tfidf.py -O $AIRFLOW_HOME/disaster_detection_tfidf.py 
@@ -57,26 +57,25 @@ download_dataset = BashOperator(
 )
 train = BashOperator(
     task_id='train',
-    depends_on_past=False,
+    depends_on_past=True,
     bash_command='python3 $AIRFLOW_HOME/disaster_detection_tfidf.py',
     retries=3,
     dag=dag,
 )
 test = BashOperator(
     task_id='test',
-    depends_on_past=False,
+    depends_on_past=True,
     bash_command='head -50 $AIRFLOW_HOME/disaster_data/train.csv > $AIRFLOW_HOME/disaster_data/predict.csv',
     retries=3,
     dag=dag,
 )
 
-    #lsof -i tcp:8008 | awk 'NR!=1 {print $2}' | xargs kill;
 serve_commands = """
     python3 $AIRFLOW_HOME/predict_disaster_tfidf.py > $AIRFLOW_HOME/logs/prediction.log
     """
 serve = BashOperator(
     task_id='serve',
-    depends_on_past=False,
+    depends_on_past=True,
     bash_command=serve_commands,
     retries=3,
     dag=dag,
