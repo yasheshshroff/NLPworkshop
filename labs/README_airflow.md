@@ -1,7 +1,7 @@
 # Setting up Airflow on AWS
 
 ```shell
-# 1. set the environment (portability)
+# 1. set the environment (portability) in ~/.bashrc
 export AIRFLOW_HOME=/home/ubuntu/airflow
 
 # 2. activate the ML environment
