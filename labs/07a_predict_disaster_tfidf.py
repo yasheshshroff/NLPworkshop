@@ -4,7 +4,6 @@
 import numpy as np
 import pandas as pd
 import pickle
-from rich import print
 from pathlib import Path
 
 cwd = Path(__file__).parent
