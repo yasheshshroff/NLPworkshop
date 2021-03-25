@@ -19,7 +19,8 @@ airflow users create --username admin --firstname Warren --lastname Buffet --rol
 # password: a1rfl0w
 
 # 6. get the config file
-wget https://raw.githubusercontent.com/yasheshshroff/NLPworkshop/main/labs/airflow.cfg
+cd airflow
+wget https://raw.githubusercontent.com/yasheshshroff/NLPworkshop/main/labs/airflow.cfg -O airflow.cfg
 
 # 7. create the dags folder
 mkdir dags
