@@ -55,6 +55,7 @@ airflow webserver &> /dev/null
 wget https://raw.githubusercontent.com/yasheshshroff/NLPworkshop/main/labs/airflow_docker_demo.zip
 unzip airflow_docker_demo.zip
 cd airflow_docker_demo
+sudo apt install docker-compose
 docker-compose build
 docker-compose up -d
 
