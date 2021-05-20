@@ -1,6 +1,9 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yasheshshroff/NLPworkshop/)
 
-# NLPworkshop
+# Learning NLP
+
+
+This repo is a collection of NLP projects that walk through the NLP pipeline and introduce key libraries to build an end to end workflow. 
 
 1. Foundations
 2. Applications
