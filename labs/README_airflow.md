@@ -56,6 +56,7 @@ wget https://raw.githubusercontent.com/yasheshshroff/NLPworkshop/main/labs/airfl
 unzip airflow_docker_demo.zip
 cd airflow_docker_demo
 sudo apt install docker-compose
+sudo dockerd &
 docker-compose build
 docker-compose up -d
 
