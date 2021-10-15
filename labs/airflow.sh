@@ -18,5 +18,3 @@ chown -R airflow:airflow $AIRFLOW_HOME
 sh ./start-airflow.sh
 
 
-# Create User
-airflow users create --username admin --firstname Warren --lastname Buffet --role Admin --email nowhere@here.com
