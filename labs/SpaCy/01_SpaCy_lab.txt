@@ -1,0 +1,16 @@
+%sh
+# Installing
+pip install -U pip setuptools wheel
+pip install -U spacy
+python -m spacy download en_core_web_sm
+
+import spacy
+nlp = spacy.load("en-core-web-sm")
+
+with open("data/nasa.txt", "r") as f:
+    text = f.read()
+
+print(text)
+
+doc = nlp(text)
+
